@@ -1,0 +1,28 @@
+﻿<ion-view view-title="Explore">
+    <ion-content>
+        <h1>explore</h1>
+    </ion-content>
+
+    <ion-content>
+        <form>
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">Memory Name</span>
+                    <input type="text" ng-model="memorySearched.name" required>
+                </label>
+                <label class="item">
+                    <button ng-click="doSearchMemory()" class="button button-block button-positive" type="submit">Search Memory</button>
+                </label>
+                <label class="item">
+                    <button ng-click="doDeleteMemory()" class="button button-block button-positive" type="submit">Delete Memory</button>
+                </label>
+            </div>
+        </form>
+        <h2>List of memories</h2>
+        <ul>
+            <li class="animate-repeat" ng-repeat="memory in memoryArray">
+                memory : {{memory}}
+            </li>
+        </ul>
+    </ion-content>
+</ion-view>

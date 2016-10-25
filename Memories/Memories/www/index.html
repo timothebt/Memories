@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <title></title>
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
+    <link href="css/ionic.app.css" rel="stylesheet">
+    -->
+
+    <!--For users deploying their apps to Windows 8.1 or Android Gingerbread, platformOverrided.js
+    will inject platform-specific code from the /merges folder -->
+    <script src="js/platformOverrides.js"></script>
+
+    <!-- ionic/angularjs js -->
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
+    <!-- your app's js -->
+    <script src="js/app.js"></script>
+
+    <!-- localstorage services -->
+    <script src="js/services/userList_service.js"></script>
+    <script src="js/services/memoryList_service.js"></script>
+    <script src="js/services/userLogged_service.js"></script>
+
+    <!-- scripts to manage the opening of the application -->
+    <script src="js/services/openApp_service.js"></script>
+    <script src="js/controllers/openApp_controller.js"></script>
+
+    <!-- scripts to manage the login of an user -->
+    <script src="js/services/login_service.js"></script>
+    <script src="js/controllers/login_controller.js"></script>
+
+    <!-- scripts to manage the hompepage -->
+    <script src="js/services/homepage_service.js"></script>
+    <script src="js/controllers/homepage_controller.js"></script>
+
+    <!-- scripts to manage creation of a memory -->
+    <script src="js/services/createMemory_service.js"></script>
+    <script src="js/controllers/createMemory_controller.js"></script>
+
+    <!-- scripts to manage creation of an user -->
+    <script src="js/services/createUser_service.js"></script>
+    <script src="js/controllers/createUser_controller.js"></script>
+
+    <!-- scripts to manage search and delete of a memory and print a list of memories -->
+    <script src="js/controllers/explore_controller.js"></script>
+    <script src="js/services/explore_service.js"></script>
+
+    <!-- scripts to manage playlists -->
+    <script src="js/controllers/playlists_controller.js"></script>
+    <script src="js/controllers/playlist_controller.js"></script>
+    
+
+    <!-- scripts to manage delete -->
+    <script src="js/controllers/delete_controller.js"></script>
+
+  </head>
+
+  <body ng-app="app">
+    <ion-nav-view></ion-nav-view>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+﻿<ion-view view-title="Create Memory">
+    <ion-header-bar>
+        <h1 class="title">Create Memory</h1>
+    </ion-header-bar>
+
+    <ion-content>
+        <form ng-submit="doCreateMemory()">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">Memory Name</span>
+                    <input type="text" ng-model="memoryCreated.name" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">description</span>
+                    <input type="text" ng-model="memoryCreated.description">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">date</span>
+                    <input type="date" ng-model="memoryCreated.date">
+                </label>
+                <label class="item">
+                    <button class="button button-block button-positive" type="submit">Create Memory</button>
+                </label>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>
