@@ -13,4 +13,7 @@ app.service('login_service', function (userList_service, userLogged_service) {
         }
         return userValid;
     }
+
+    //new modif
+
 });
