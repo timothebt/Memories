@@ -1,33 +1,67 @@
 ﻿<ion-view view-title="Explore">
-    <ion-content>
-        <h1>explore</h1>
-    </ion-content>
+
+    <ion-nav-buttons side="right">
+        <!--<a side="right" class="button button-icon icon ion-android-more-vertical" ng-click="doEdit()">
+            <span align="right" class="list" ng-hide="OptionButton">
+                <div class="item">Item 1</div>
+                <div class="item">Item 2</div>
+                <div class="item">Item efeffv efz3</div>
+            </span>
+        </a>-->
+
+        <a side="right" class="button button-icon icon ion-android-options" ng-click="showPopup()"></a>
+
+        <a side="right" class="button button-icon icon ion-android-more-vertical" ng-click="openPopover($event)"></a>
+        
+
+        <script id="my-popover.html" type="text/ng-template">
+            <ion-popover-view style="height: 125px">
+                <ion-content>
+                    <ion-list>
+                        <ion-item menu-close href="">
+                            Delete
+                        </ion-item>
+                        <ion-item menu-close href="">
+                            Share
+                        </ion-item>
+                    </ion-list>
+                </ion-content>
+            </ion-popover-view>
+        </script>
+
+
+    </ion-nav-buttons>
+
+    <ion-header-bar class="bar bar-subheader item-input-inset">
+        <div class="item-input-wrapper">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="search" placeholder="Search"
+                   ng-change="doSearchMemory()"
+                   ng-model="memorySearched.str">
+            <i ng-if="memorySearched.str.length"
+               class="button button-icon icon ion-android-close input-button"
+               ng-click="doClearSearch()"></i>
+        </div>
+        <i class="button button-icon icon-right ion-plus" ng-click="doAddMemory()"></i>
+    </ion-header-bar>
 
     <ion-content>
-        <form>
-            <div class="list">
-                <label class="item item-input">
-                    <span class="input-label">Memory Name</span>
-                    <input type="text" ng-model="memorySearched.name" required>
-                </label>
-                <label class="item">
-                    <button ng-click="doSearchMemory()" class="button button-block button-positive" type="submit">Search Memory</button>
-                </label>
-                <label class="item">
-                    <button ng-click="doDeleteMemory()" class="button button-block button-positive" type="submit">Delete Memory</button>
-                </label>
+
+
+        
+
+        <p>Memories ordered by : {{filter}}</p>
+
+        <div class="list list-inset">
+            <div class="item" ng-repeat="memory in memoryArray | orderBy : filter" ng-click="doOpenMemory(memory)">
+                {{memory.name}}<br>                
+                date : {{memory.date}}<br>
+                grade : {{memory.grade}}
+                <!--description : {{memory.description}}<br>
+
+                <button ng-click="doTask(memory.name)">open</button>-->
             </div>
-        </form>
-        <div>
-            <h2>List of memories</h2>
-            <ul>
-                <li class="animate-repeat" ng-repeat="memory in memoryArray" ng-click="doOpenMemory(memory)">
-                    name : {{memory.name}}<br>
-                    description : {{memory.description}}<br>
-                    date : {{memory.date}}
-                    <!--<button ng-click="doTask(memory.name)">open</button>-->
-                </li>
-            </ul>
         </div>
     </ion-content>
+
 </ion-view>

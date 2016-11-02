@@ -93,6 +93,16 @@ app.config(function ($stateProvider, $urlRouterProvider) {
         }
     })
 
+    .state('app.favorites', {
+        url: '/favorites',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/favorites.html',
+                controller: 'favorites_controller'
+            }
+        }
+    })
+
     .state('app.login', {
         url: '/login',
         views: {

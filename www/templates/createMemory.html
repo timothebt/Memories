@@ -4,24 +4,34 @@
     </ion-header-bar>
 
     <ion-content>
-        <form ng-submit="doCreateMemory()">
-            <div class="list">
-                <label class="item item-input">
-                    <span class="input-label">Memory Name</span>
-                    <input type="text" ng-model="memoryCreated.name" required>
-                </label>
-                <label class="item item-input">
-                    <span class="input-label">description</span>
-                    <input type="text" ng-model="memoryCreated.description">
-                </label>
-                <label class="item item-input">
-                    <span class="input-label">date</span>
-                    <input type="date" ng-model="memoryCreated.date">
-                </label>
-                <label class="item">
-                    <button class="button button-block button-positive" type="submit">Create Memory</button>
-                </label>
-            </div>
-        </form>
+        <div class="list">
+            <label class="item item-input">
+                <input type="text" placeholder="Memory name" ng-model="memoryCreated.name" required>
+            </label>
+            <label class="item item-input">
+                <textarea placeholder="Description" ng-model="memoryCreated.description"></textarea>
+            </label>
+            <label class="item item-input">
+                <input type="date" ng-model="memoryCreated.date">
+            </label>
+            <a class="button button-icon" ng-click="doGrade(1)">
+                <i class="icon ion-android-star {{colorButtonGrade1}}"></i>
+            </a>
+            <a class="button button-icon" ng-click="doGrade(2)">
+                <i class="icon ion-android-star {{colorButtonGrade2}}"></i>
+            </a>
+            <a class="button button-icon" ng-click="doGrade(3)">
+                <i class="icon ion-android-star {{colorButtonGrade3}}"></i>
+            </a>
+            <a class="button button-icon" ng-click="doGrade(4)">
+                <i class="icon ion-android-star {{colorButtonGrade4}}"></i>
+            </a>
+            <a class="button button-icon" ng-click="doGrade(5)">
+                <i class="icon ion-android-star {{colorButtonGrade5}}"></i>
+            </a>
+            <label class="item item-input">
+                <button class="button button-block button-positive" ng-click="doCreateMemory()">Create Memory</button>
+            </label>
+        </div>
     </ion-content>
 </ion-view>

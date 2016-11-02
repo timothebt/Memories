@@ -1,0 +1,28 @@
+﻿<ion-view view-title="Favorites">
+
+    <ion-header-bar class="bar bar-subheader item-input-inset">
+        <div class="item-input-wrapper">
+            <i class="icon ion-search placeholder-icon"></i>
+            <input type="search" placeholder="Search"
+                   ng-change="doSearchMemory()"
+                   ng-model="memorySearched.str">
+            <i ng-if="memorySearched.str.length"
+               class="button button-icon icon ion-android-close input-button"
+               ng-click="doClearSearch()"></i>
+        </div>
+    </ion-header-bar>
+
+    <ion-content>
+
+        <div class="list list-inset">
+            <div class="item" ng-repeat="memory in favoritesArray | orderBy : 'name'" ng-click="doOpenMemory(memory)">
+                {{memory.name}}
+                <!--description : {{memory.description}}<br>
+                date : {{memory.date}}
+                <button ng-click="doTask(memory.name)">open</button>-->
+            </div>
+        </div>
+
+    </ion-content>
+
+</ion-view>

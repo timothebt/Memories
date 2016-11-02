@@ -11,6 +11,12 @@ app.controller('menu_controller', function ($scope, $state, $rootScope, $ionicHi
         $rootScope.menuButton = true;
         $state.go('app.explore');
     }
+
+    $scope.doBack = function () {
+        location.reload();
+        $rootScope.menuButton = true;
+        $ionicHistory.goBack();
+    }
     
     $scope.doUnlogUser = function () {
         var userDeconnected = menu_service.unlogUser();

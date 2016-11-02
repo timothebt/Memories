@@ -1,10 +1,89 @@
-﻿<ion-view view-title="ViewMemory">
+﻿<ion-view view-title="Memory">
+
+    <ion-nav-buttons side="right">
+        <a class="button button-icon icon ion-edit" ng-click="doEdit()" ng-hide="view"></a>
+        <!--<a class="button button-icon icon ion-star"></a>
+        <button class="button button-icon ion-star"></button>-->
+        <a class="button button-icon" ng-click="doFavorites()"  ng-hide="view">
+            <i class="icon ion-star {{colorButtonFavorite}}"></i>
+        </a>
+        <a class="button button-icon icon ion-trash-b" ng-click="doDeleteMemory()" ng-hide="view"></a>
+    </ion-nav-buttons>
+
     <ion-content>
-        <h1>View Memory</h1>
-        <div>
-            name : {{memory.name}}<br>
-            description : {{memory.description}}<br>
-            date : {{memory.date}}
+
+        <div class="card" ng-hide="view">
+            <div class="item item-divider">
+                {{memory.name}}
+            </div>
+            <div class="item item-text-wrap">
+                {{memory.description}}
+            </div>
+            <div class="item item-text-wrap">
+                {{ memory.date | date : 'dd/MM/yyyy'}}
+            </div>
+            <div class="item item-text-wrap">
+                <a class="button button-icon">
+                    <i class="icon ion-android-star {{colorButtonGrade1}}"></i>
+                </a>
+                <a class="button button-icon">
+                    <i class="icon ion-android-star {{colorButtonGrade2}}"></i>
+                </a>
+                <a class="button button-icon">
+                    <i class="icon ion-android-star {{colorButtonGrade3}}"></i>
+                </a>
+                <a class="button button-icon">
+                    <i class="icon ion-android-star {{colorButtonGrade4}}"></i>
+                </a>
+                <a class="button button-icon">
+                    <i class="icon ion-android-star {{colorButtonGrade5}}"></i>
+                </a>
+            </div>
         </div>
+
+        <div class="list" ng-show="view">
+            <label class="item item-input">
+                <span class="input-label">Memory Name</span>
+                <input type="text" ng-model="memoryEdited.name" required>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">description</span>
+                <textarea ng-model="memoryEdited.description"></textarea>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">date</span>
+                <input type="date" ng-model="memoryEdited.date">
+            </label>
+            <div class="item">
+                <a class="button button-icon" ng-click="doGrade(1)">
+                    <i class="icon ion-android-star {{colorButtonGrade1}}"></i>
+                </a>
+                <a class="button button-icon" ng-click="doGrade(2)">
+                    <i class="icon ion-android-star {{colorButtonGrade2}}"></i>
+                </a>
+                <a class="button button-icon" ng-click="doGrade(3)">
+                    <i class="icon ion-android-star {{colorButtonGrade3}}"></i>
+                </a>
+                <a class="button button-icon" ng-click="doGrade(4)">
+                    <i class="icon ion-android-star {{colorButtonGrade4}}"></i>
+                </a>
+                <a class="button button-icon" ng-click="doGrade(5)">
+                    <i class="icon ion-android-star {{colorButtonGrade5}}"></i>
+                </a>
+            </div>
+                <!--<label class="item">
+            <button class="button button-block button-positive" type="submit">Save Memory</button>
+        </label>-->
+        </div>
+
+        <div class="bar bar-footer" ng-show="view">
+            <button class="button" ng-click="doCancel()">CANCEL</button>
+            <button class="button" ng-click="doEditMemory()">SAVE</button>
+        </div>
+
+        <!--<div ng-show="view">
+            <button class="button button-block button-positive" ng-click="doCancel()">Cancel</button>
+        </div>-->
+
     </ion-content>
 </ion-view>

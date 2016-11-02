@@ -1,6 +1,6 @@
 ﻿var app = angular.module('app');
 
-app.service('createMemory_service', function (memoryList_service) {
+app.service('createMemory_service', function (memoryList_service, memory_service) {
 
     //var usersList = localStorage.getItem("memoryList");
 

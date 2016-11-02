@@ -47,6 +47,18 @@ app.service('memoryList_service', function (userLogged_service, memory_service) 
             return findMemory(memoryName);
         }
     }
+
+    this.getMemoryIndex = function (memoryName) {
+
+        updateArray();
+        if (memoryArray === null) {
+            console.log("no memory stored");
+            return null;
+        }
+        else {
+            return findMemoryIndex(memoryName);
+        }
+    }
     
     this.getMemoryArray = function () {
 
@@ -54,10 +66,26 @@ app.service('memoryList_service', function (userLogged_service, memory_service) 
         return memoryArray;
     }
 
-    this.setMemory = function (memory) {
-
-        
-        return success;
+    this.editMemory = function (memoryToEdit, memory) {
+        updateArray();
+        if (memoryArray === null) {
+            console.log("no memory stored");
+            return false;
+        }
+        else {
+            var indexMemoryToEdit = findMemoryIndex(memoryToEdit.name);
+            if (indexMemoryToEdit === -1) {
+                console.log("memory to edit not stored in memory");
+                return false;
+            }
+            else {
+                console.log("memory going to be edited and push to memory");
+                memoryArray[indexMemoryToEdit] = Object.assign (memoryArray[indexMemoryToEdit],memory);
+                console.log("memory grade : " + memoryArray[indexMemoryToEdit].grade);
+                pushArray();
+                return true;
+            }
+        }
     }
 
     this.deleteMemory = function (memoryName) {

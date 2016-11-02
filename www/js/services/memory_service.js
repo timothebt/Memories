@@ -12,4 +12,12 @@ app.service('memory_service', function (userLogged_service) {
         return memory;
     }
 
+    this.copyMemory = function (memoryToCopy){
+        var memory = {};
+        memory.name = memoryToCopy.name;
+        memory.description = memoryToCopy.description;
+        memory.date = new Date(memoryToCopy.date);
+        return memory;
+    }
+
 });

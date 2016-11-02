@@ -3,13 +3,14 @@
 app.service('explore_service', function ($state, memoryList_service, userLogged_service, viewMemory_service) {
 
 
-
+    /*
     this.searchMemory = function (memory) {
 
         console.log('Searching memory : ' + memory.name);
         var memoryExists = memoryList_service.getMemory(memory.name);
         if (memoryExists !== null) {
-            console.log("memory found : " + memoryExists.name );
+            console.log("memory found : " + memoryExists.name);
+            viewMemory_service.setMemory(memoryExists);
             return memoryExists;
         }
         else {
@@ -17,44 +18,41 @@ app.service('explore_service', function ($state, memoryList_service, userLogged_
             return;
         }
 
-    }
+    }*/
 
     this.deleteMemory = function (memory) {
 
-        console.log('Deleting memory : ', memory.name);
+        console.log('Deleting memory : ' + memory.name);
         return memoryList_service.deleteMemory(memory.name);
     }
 
-    this.getMemoryArray = function () {
-    /*
-        memoryArray = new Array();
-        memoryArrayGotten = new Array();
-        memoryArrayGotten = memoryList_service.getMemoryArray();
-
-        for (i = 0; i < memoryArrayGotten.length; i++) {
-            var object = memoryArrayGotten[i];
-            console.log("memory number : " + i + " memory : " + object.name);
-            memoryArray[i] = object;
-        }
-        */
-        memoryArray = memoryList_service.getMemoryArray();
-        memoryUserArray = new Array();
+    this.getMemoryArray = function (memoryName) {
+        var memoryArray = memoryList_service.getMemoryArray();
+        var memorySearchedArray = new Array();
+        var userName = userLogged_service.getUserLogged().name;
         var index = 0;
-        userName = userLogged_service.getUserLogged().name;
+
         if (memoryArray === null) {
             return null;
         }
         else {
-            for (var i = 0; i < memoryArray.length; i++) {
-                for (var j = 0; j < memoryArray[i].autorizedUsers.length; j++) {
-                    if (memoryArray[i].autorizedUsers[j] == userName) {
-                        memoryUserArray[index] = memoryArray[i];
-                        index++;
-                    }
+            memoryArray.forEach(checkMemory);
+            return memorySearchedArray;
+        }
+        
+        function checkUser(user) {
+            return user == userName;
+        }
+
+        function checkMemory(memory, index) {
+            if (memory.autorizedUsers.find(checkUser) != null) {
+                if (memoryName == null || memoryName == "") {
+                    memorySearchedArray.push(memory);
+                }
+                else if (memory.name.search(memoryName) != -1) {
+                    memorySearchedArray.push(memory);
                 }
             }
-
-            return memoryUserArray;
         }
         
 
@@ -62,7 +60,7 @@ app.service('explore_service', function ($state, memoryList_service, userLogged_
 
     this.openMemory = function (memory){
         viewMemory_service.setMemory(memory);
-        $state.go('app.viewMemory');
+        //$state.go('app.viewMemory');
     }
 
 });

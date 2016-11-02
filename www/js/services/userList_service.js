@@ -1,6 +1,6 @@
 ﻿var app = angular.module('app');
 
-app.service('userList_service', function () {
+app.service('userList_service', function (userLogged_service) {
     
     var userArray = [];
     var success = true;
@@ -32,7 +32,7 @@ app.service('userList_service', function () {
             return false;
         }
         else {
-            return findUserValid(user);
+            return findUser(user.name);
         }
     }
 
@@ -54,9 +54,15 @@ app.service('userList_service', function () {
         return userArray;
     }
 
-    this.setUser = function (user) {
-
-
+    this.editUser = function () {
+        console.log("edit user");
+        updateArray();
+        var userLogged = userLogged_service.getUserLogged();
+        console.log("favorites list : " + userLogged.favoritesArray.toString());
+        var indexUserToEdit = findUserIndex(userLogged.name);
+        userArray[indexUserToEdit] = Object.assign(userArray[indexUserToEdit], userLogged);
+        pushArray();
+        console.log("favorites seved : " + userArray[indexUserToEdit].favoritesArray.toString());
         return success;
     }
 
